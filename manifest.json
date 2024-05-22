@@ -7,5 +7,11 @@
         "48":"img/icon48.png",
         "128":"img/icon128.png",
         "500":"img/icon500.png"
-    }
+    },
+    "content_scripts":[
+        {
+            "matches":["https://service.cloud.teu.ac.jp/portal/*"],
+            "js":"content_scripts.js"
+        }
+    ]
 }
