@@ -11,7 +11,7 @@
     "content_scripts":[
         {
             "matches":["https://service.cloud.teu.ac.jp/portal/*"],
-            "js":"content_scripts.js"
+            "js":["content_scripts.js", "https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"]
         }
     ]
 }
