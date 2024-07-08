@@ -1,17 +1,22 @@
 {
-    "manifest_version":3,
-    "name":"Backgraund Image config for TUT portal(東京工科大学学生ポータル)",
-    "version":"1.0.0",
-    "description":"東京工科大学学生ポータルにて背景画像を設定できます。",
-    "icons":{
-        "48":"img/icon48.png",
-        "128":"img/icon128.png",
-        "500":"img/icon500.png"
+    "manifest_version": 3,
+    "name": "Backgraund Image config for TUT portal(東京工科大学学生ポータル)",
+    "version": "1.0.0",
+    "description": "東京工科大学学生ポータルにて背景画像を設定できます。",
+    "icons": {
+        "48": "img/icon48.png",
+        "128": "img/icon128.png",
+        "500": "img/icon500.png"
     },
-    "content_scripts":[
+    "content_scripts": [
         {
-            "matches":["https://service.cloud.teu.ac.jp/portal/*"],
-            "js":["content_scripts.js", "https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"]
+            "matches": [
+                "https://service.cloud.teu.ac.jp/portal/*"
+            ],
+            "js": [
+                "jquery-3.7.1.min.js",
+                "content_scripts.js"
+            ]
         }
     ]
 }
