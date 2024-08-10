@@ -1,11 +1,20 @@
-<html>
+<!DOCTYPE html>
+<html lang="ja">
 
 <head>
+    <meta charset="utf-8">
     <link rel="stylesheet" href="./css/popup.css">
 </head>
 
 <body>
-
+    <label for="url">設定したい画像のURLを入力してください<br>対応画像形式:png,jpg,gif,bmp</label>
+    <div>
+        <input type="url" name="img_url" id="img_url" placeholder="https://example.com/example.png"
+            pattern="https?://[\w/:%#\$&\?\(\)~\.=\+\-]+" size="30" required />
+        <button name="button" id="send">
+            <nobr>更新</nobr>
+        </button>
+    </div>
     <script src="../jquery-3.7.1.min.js"></script>
     <script src="./js/script.js"></script>
 </body>
