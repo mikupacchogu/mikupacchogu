@@ -11,7 +11,7 @@ $(document).ready(function () {
         "background-size": "cover",
     });
     // 各メニュー欄の背景色設定
-    $(".l__item, .group, .m__header, .m__footer").css({
+    $(".l__item, .group, .m__header, .m__footer, .c__main-tab-menu").css({
         "background-color": "#ffffffe0"
     });
 });
