@@ -1,15 +1,14 @@
-chrome.runtime.onInstalled.addListener(function (details: object): function {
+chrome.runtime.onInstalled.addListener(function (details) {
     // インストール時の挙動
     if (details.reason === "install") {
-
-        let defaultSettings = {
+        var defaultSettings = {
             "img_url": ""
         };
-
         chrome.storage.sync.set(defaultSettings, function () {
             if (chrome.runtime.lastError) {
                 console.error(chrome.runtime.lastError);
-            } else {
+            }
+            else {
                 console.log("Initial settings set.");
             }
         });
