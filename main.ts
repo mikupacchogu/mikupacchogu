@@ -3,7 +3,8 @@
 // content_scripts.js内部のscriptを記述
 
 function changeBackgroundImage(url: string): void {
-    console.log("変更を加えています");
+    console.log("変更を加えています\n画像URL");
+    console.log(url)
     // 背景画像の設定
     $("body").css({
         "background-image": `url(${url})`,
@@ -17,9 +18,20 @@ function changeBackgroundImage(url: string): void {
     $(".l__item, .group, .m__header, .m__footer").css({
         "background-color": "#ffffffe0"
     })
+    console.log("変更が終了しました")
+}
+
+function load2Call(): void {
+    chrome.storage.sync.get("img_url", (data: { [key: string]: string }) => {
+        const url: string = data["img_url"];
+        changeBackgroundImage(url);
+    });
 }
 
 $(document).ready(function () {
-    const url: string = "https://pbs.twimg.com/media/GMoZoCJacAA6WZ1?format=jpg&name=4096x4096";
-    changeBackgroundImage(url);
+    load2Call()
+});
+
+chrome.storage.onChanged.addListener(function (): void {
+    load2Call()
 });

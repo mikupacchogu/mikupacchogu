@@ -7,14 +7,19 @@
 </head>
 
 <body>
-    <label for="url">設定したい画像のURLを入力してください<br>対応画像形式:png,jpg,gif,bmp</label>
+    <h1>Backgraund Image config</h1>
+    <h2>for TUT portal</h2>
+    <h3>設定画面</h3>
+    <label for="url">設定したい画像のURLを入力してください<br>推奨画像形式:png,jpg,gif,bmp</label>
     <div>
-        <input type="url" name="img_url" id="img_url" placeholder="https://example.com/example.png"
-            pattern="https?://[\w/:%#\$&\?\(\)~\.=\+\-]+" size="30" required />
+        <input type="url" name="img_url" id="img_url" placeholder="https://example.com/example.png" pattern="https?://"
+            size="30" required />
         <button name="button" id="send">
             <nobr>更新</nobr>
         </button>
     </div>
+    <p id="output"></p>
+    <span id="output2"></span>
     <script src="../jquery-3.7.1.min.js"></script>
     <script src="./js/script.js"></script>
 </body>
