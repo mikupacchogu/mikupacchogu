@@ -1,4 +1,4 @@
-/// <reference path="lib/jquery.d.ts" />
+/// <reference path="../lib/jquery.d.ts" />
 
 // content_scripts.js内部のscriptを記述
 
