@@ -17,7 +17,6 @@
                 "https://service.cloud.teu.ac.jp/portal/*"
             ],
             "js": [
-                "common/jquery-3.7.1.min.js",
                 "content_scripts/content_scripts.js"
             ]
         }
