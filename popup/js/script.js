@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('img_url').addEventListener('input', function(e) {
         if (this.value.bytes() <= 8000) {
-            document.getElementById('output').textContent = "参照先のプレビュー";
+            document.getElementById('message').textContent = "参照先のプレビュー";
         } else {
-            document.getElementById('output').textContent = "URLが長すぎます(8KB以下の容量推奨:".concat(this.value.bytes(), "B)");
+            document.getElementById('message').textContent = "URLが長すぎます(8KB以下の容量推奨:".concat(this.value.bytes(), "B)");
         }
-        let img = document.createElement('img');
-        img.setAttribute('alt', 'プレビュー');
-        img.setAttribute('src', this.value);
-        img.setAttribute('width', '240px');
-        document.getElementById('output2').innerHTML = '';
-        document.getElementById('output2').appendChild(img);
+        let imgElement = document.createElement('img');
+        imgElement.setAttribute('alt', 'プレビュー');
+        imgElement.setAttribute('src', this.value);
+        imgElement.setAttribute('width', '240px');
+        document.getElementById('img_sample').innerHTML = '';
+        document.getElementById('img_sample').appendChild(imgElement);
     });
 
     document.getElementById('send').addEventListener('click', function() {
