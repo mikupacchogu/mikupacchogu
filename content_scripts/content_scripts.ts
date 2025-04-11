@@ -2,6 +2,10 @@ interface StorageData {
     [index: string]: string
 }
 
+/**
+ * 背景画像の追加とメニュー欄の背景色に変更を加える関数です
+ * @param {string} url 画像URL
+ */
 function changeBackgroundImage(url: string): void {
     console.log("変更を加えています\n画像URL: ");
     console.log(url);
@@ -20,7 +24,9 @@ function changeBackgroundImage(url: string): void {
     console.log("変更が終了しました");
 }
 
-
+/**
+ * chromeの同期ストレージからデータを取得し、chengeBackgroundImageへ画像URLを渡す関数です
+ */
 function load2Call(): void {
     // chromeの同期ストレージからデータを取得し、chengeBackgroundImageへ画像URLを渡す
     chrome.storage.sync.get("img_url", function (data: StorageData) {
