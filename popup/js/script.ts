@@ -41,8 +41,8 @@ document.addEventListener('DOMContentLoaded', function () {
         imgElement.src = url; // URLの設定を忘れずに追加
     });
 
-    document.getElementById('send')?.addEventListener('click', async function () {
-        const url: string = (this as HTMLInputElement).value;
+    document.getElementById('send')!.addEventListener('click', async function () {
+        const url: string = (document.getElementById('img_url')! as HTMLInputElement).value;
 
         if (url.bytes() > 8000) {
             document.getElementById('message')!.textContent = "URLが長すぎます(8KB以下の容量推奨:" + url.bytes() + "B)"
@@ -50,14 +50,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         try {
-            const imgExist = await checkImageExists(url);
+            const imgExist: boolean = await checkImageExists(url);
             if (imgExist) {
                 chrome.storage.sync.set({ "img_url": url });
                 window.close();
             } else {
                 alert("画像が存在しません");
             }
-        } catch (error) {
+        } catch (error: any) {
             alert("エラーが発生しました: " + error.message);
         }
     });
@@ -65,10 +65,10 @@ document.addEventListener('DOMContentLoaded', function () {
     /**
      * 画像URLのリンク先が存在しているか判定します
      * @param {string} url 画像URL 
-     * @returns {Promise<boolean>} 
+     * @returns {Promise<boolean>}
      */
     function checkImageExists(url: string): Promise<boolean> {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             let img: HTMLImageElement = new Image();
             img.onload = () => resolve(true);
             img.onerror = () => resolve(false);
@@ -78,6 +78,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // 文字列のバイト数を返すプロパティを作成
     String.prototype.bytes = function (): number {
-        return (encodeURIComponent(this).replace(/%../g, "x").length);
+        return (encodeURIComponent((this as string)).replace(/%../g, "x").length);
     };
 });
