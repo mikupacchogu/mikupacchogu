@@ -5,6 +5,9 @@ chrome.runtime.onInstalled.addListener(function (details) {
     }
 });
 
+/**
+ * chromにある拡張機能用同期ストレージを初期化する
+ */
 function syncStorageInit() {
     const defaultSettings = {
         "img_url": ""
