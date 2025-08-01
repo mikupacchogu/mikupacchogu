@@ -1,4 +1,5 @@
 "use strict";
+const BYTE_LIMIT = 8000;
 document.addEventListener('DOMContentLoaded', function () {
     // 画像URL入力受付～プレビューまでを行う
     document.getElementById('img_url').addEventListener('input', function (e) {
@@ -11,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById("send").style.cssText = "coursor: not-allowed";
             return;
         }
-        if (url.bytes() >= 8000) {
+        if (url.isOverByteLimit(BYTE_LIMIT)) {
             document.getElementById('message').textContent = "URLが長すぎます(8KB以下の容量推奨:" + url.bytes() + "B)";
             document.getElementById("send").style.cssText = "cursor: not-allowed";
             return;
@@ -34,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     document.getElementById('send').addEventListener('click', async function () {
         const url = document.getElementById('img_url').value;
-        if (url.bytes() > 8000) {
+        if (url.isOverByteLimit(BYTE_LIMIT)) {
             document.getElementById('message').textContent = "URLが長すぎます(8KB以下の容量推奨:" + url.bytes() + "B)";
             return;
         }
@@ -68,5 +69,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // 文字列のバイト数を返すプロパティを作成
     String.prototype.bytes = function () {
         return (encodeURIComponent(this).replace(/%../g, "x").length);
+    };
+    String.prototype.isOverByteLimit = function (byteLimit) {
+        return this.bytes() > byteLimit;
     };
 });
