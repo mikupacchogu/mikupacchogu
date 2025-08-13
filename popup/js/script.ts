@@ -1,6 +1,9 @@
 interface String {
     bytes(): number;
+    isOverByteLimit(byteLimit: number): boolean;
 }
+
+const BYTE_LIMIT: number = 8000;
 
 document.addEventListener('DOMContentLoaded', function () {
     // 画像URL入力受付～プレビューまでを行う
@@ -16,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        if (url.bytes() >= 8000) {
+        if (url.isOverByteLimit(BYTE_LIMIT)) {
             document.getElementById('message')!.textContent = "URLが長すぎます(8KB以下の容量推奨:" + url.bytes() + "B)";
             document.getElementById("send")!.style.cssText = "cursor: not-allowed";
             return;
@@ -44,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('send')!.addEventListener('click', async function () {
         const url: string = (document.getElementById('img_url')! as HTMLInputElement).value;
 
-        if (url.bytes() > 8000) {
+        if (url.isOverByteLimit(BYTE_LIMIT)) {
             document.getElementById('message')!.textContent = "URLが長すぎます(8KB以下の容量推奨:" + url.bytes() + "B)"
             return;
         }
@@ -79,5 +82,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // 文字列のバイト数を返すプロパティを作成
     String.prototype.bytes = function (): number {
         return (encodeURIComponent((this as string)).replace(/%../g, "x").length);
+    };
+
+    // 文字列のバイト数が与えられたリミットを超えているか判定するプロパティを作成
+    String.prototype.isOverByteLimit = function (byteLimit: number): boolean {
+        return this.bytes() > byteLimit
     };
 });

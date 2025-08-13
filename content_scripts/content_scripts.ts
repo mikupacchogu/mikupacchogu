@@ -6,7 +6,7 @@ interface StorageData {
  * 背景画像の追加とメニュー欄の背景色に変更を加える関数です
  * @param {string} url 画像URL
  */
-function changeBackgroundImage(url: string): void {
+function changeBackgroundImage(url: string) {
     console.log("変更を加えています\n画像URL: ");
     console.log(url);
 
@@ -18,7 +18,7 @@ function changeBackgroundImage(url: string): void {
     document.body.style.backgroundSize = "cover"; // 背景サイズ
 
     // 各メニュー欄の背景色設定
-    let elements: NodeListOf<HTMLParagraphElement> = document.querySelectorAll(".l__item, .group, .m__header, .m__footer") as NodeListOf<HTMLParagraphElement>;
+    const elements: NodeListOf<HTMLParagraphElement> = document.querySelectorAll(".l__item, .group, .m__header, .m__footer") as NodeListOf<HTMLParagraphElement>;
     elements.forEach((element => element.style.backgroundColor = "#ffffffe0"));
 
     console.log("変更が終了しました");
@@ -27,10 +27,10 @@ function changeBackgroundImage(url: string): void {
 /**
  * chromeの同期ストレージからデータを取得し、chengeBackgroundImageへ画像URLを渡す関数です
  */
-function load2Call(): void {
+function load2Call() {
     // chromeの同期ストレージからデータを取得し、chengeBackgroundImageへ画像URLを渡す
     chrome.storage.sync.get("img_url", function (data: StorageData) {
-        let url: string = data["img_url"];
+        const url: string = data["img_url"];
         changeBackgroundImage(url);
     });
 }
