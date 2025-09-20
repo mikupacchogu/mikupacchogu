@@ -2,10 +2,21 @@ interface String {
     bytes(): number;
     isOverByteLimit(byteLimit: number): boolean;
 }
+interface StorageData {
+    [index: string]: string
+}
 
 const BYTE_LIMIT: number = 8000;
 
 document.addEventListener('DOMContentLoaded', function () {
+    chrome.storage.sync.get("img_url", function (data: StorageData) {
+        const url: string = data["img_url"];
+        if (url === "") {
+            return;
+        }
+
+        setPreviewImage("現在設定中の画像", url)
+    });
     // 画像URL入力受付～プレビューまでを行う
     document.getElementById('img_url')!.addEventListener('input', function (e) {
         const url: string = (this as HTMLInputElement).value;
