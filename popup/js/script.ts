@@ -9,6 +9,7 @@ interface StorageData {
 const BYTE_LIMIT: number = 8000;
 
 document.addEventListener('DOMContentLoaded', function () {
+    // 最初にpopupを表示するときに現在設定されている画像をプレビュー表示する
     chrome.storage.sync.get("img_url", function (data: StorageData) {
         const url: string = data["img_url"];
         if (url === "") {
@@ -74,6 +75,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    /**
+     * プレビュー画像を設定します
+     * @param {string} message 画像の上に表示するメッセージ
+     * @param {string} url 画像URL 
+     */
     function setPreviewImage(message: string, url: string) {
         let imgElement = new Image();
         imgElement.alt = 'プレビュー';
