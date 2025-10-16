@@ -2,10 +2,22 @@ interface String {
     bytes(): number;
     isOverByteLimit(byteLimit: number): boolean;
 }
+interface StorageData {
+    [index: string]: string
+}
 
 const BYTE_LIMIT: number = 8000;
 
 document.addEventListener('DOMContentLoaded', function () {
+    // 最初にpopupを表示するときに現在設定されている画像をプレビュー表示する
+    chrome.storage.sync.get("img_url", function (data: StorageData) {
+        const url: string = data["img_url"];
+        if (url === "") {
+            return;
+        }
+
+        setPreviewImage("現在設定中の画像", url)
+    });
     // 画像URL入力受付～プレビューまでを行う
     document.getElementById('img_url')!.addEventListener('input', function (e) {
         const url: string = (this as HTMLInputElement).value;
@@ -25,23 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        let imgElement = new Image();
-        imgElement.alt = 'プレビュー';
-        imgElement.width = 240;
-        imgElement.onload = function () {
-            document.getElementById('message')!.textContent = "参照先のプレビュー";
-            document.getElementById('img_sample')!.innerHTML = '';
-            document.getElementById('img_sample')!.appendChild(imgElement);
-            document.getElementById("send")!.style.cssText = "";
-        };
-
-        imgElement.onerror = function () {
-            document.getElementById('message')!.textContent = "画像が存在しません";
-            document.getElementById('img_sample')!.innerHTML = '';
-            document.getElementById("send")!.style.cssText = "cursor: not-allowed";
-        };
-
-        imgElement.src = url; // URLの設定を忘れずに追加
+        setPreviewImage("参照先のプレビュー", url)
     });
 
     document.getElementById('send')!.addEventListener('click', async function () {
@@ -78,6 +74,31 @@ document.addEventListener('DOMContentLoaded', function () {
             img.src = url;
         });
     }
+
+    /**
+     * プレビュー画像を設定します
+     * @param {string} message 画像の上に表示するメッセージ
+     * @param {string} url 画像URL 
+     */
+    function setPreviewImage(message: string, url: string) {
+        let imgElement = new Image();
+        imgElement.alt = 'プレビュー';
+        imgElement.width = 240;
+        imgElement.onload = function () {
+            document.getElementById('message')!.textContent = message;
+            document.getElementById('img_sample')!.innerHTML = '';
+            document.getElementById('img_sample')!.appendChild(imgElement);
+            document.getElementById("send")!.style.cssText = "";
+        };
+
+        imgElement.onerror = function () {
+            document.getElementById('message')!.textContent = "画像が存在しません";
+            document.getElementById('img_sample')!.innerHTML = '';
+            document.getElementById("send")!.style.cssText = "cursor: not-allowed";
+        };
+
+        imgElement.src = url; // URLの設定を忘れずに追加
+    };
 
     // 文字列のバイト数を返すプロパティを作成
     String.prototype.bytes = function (): number {
