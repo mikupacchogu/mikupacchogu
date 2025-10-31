@@ -10,7 +10,8 @@ chrome.runtime.onInstalled.addListener(function (details) {
  */
 function syncStorageInit() {
     const defaultSettings = {
-        "img_url": ""
+        "img_url": "",
+        "dark_mode": false,
     };
 
     chrome.storage.sync.set(defaultSettings, function () {
