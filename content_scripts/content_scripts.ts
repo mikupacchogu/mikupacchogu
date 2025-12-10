@@ -26,17 +26,23 @@ async function changeBackground(url: string, dark_mode: boolean) {
     document.body.style.backgroundSize = "cover"; // 背景サイズ
 
     // ダークモード設定
-    let backgroundColor;
+    let backgroundColor, buttonDackgroundColor, border, filter;
     if (dark_mode) {
         backgroundColor = "#000000e0"
+        buttonDackgroundColor = "#646464e0"
+        border = "solid 3px #DDDDDD"
         document.body.style.color = "#ffffff"
+        filter = "invert(100%)"
     } else {
         backgroundColor = "#ffffffe0"
+        buttonDackgroundColor = "#ffffffe0"
+        border = "solid 3px #222222"
         document.body.style.color = "#000000"
+        filter = ""
     }
 
     // 各メニュー欄の背景色設定
-    const elements: NodeListOf<HTMLParagraphElement> = document.querySelectorAll(".l__item, .group, .m__header, .m__footer, .c__list-menu a,.c__list-menu .symbol") as NodeListOf<HTMLParagraphElement>;
+    const elements: NodeListOf<HTMLParagraphElement> = document.querySelectorAll(".l__item, .group, .m__header, .m__footer, .c__page-menu, .c__list-menu a,.c__list-menu .symbol, .-lv1") as NodeListOf<HTMLParagraphElement>;
     elements.forEach((element => element.style.backgroundColor = backgroundColor));
 
     const messageBox = document.getElementsByClassName("message")
@@ -44,13 +50,20 @@ async function changeBackground(url: string, dark_mode: boolean) {
         (messageBox[i] as HTMLParagraphElement).style.color = "#000000"
     }
 
-    await sleep(200);
+    // アイコンの色反転
+    const icons = document.getElementsByClassName("icon")
+    for (let i = 0; i < icons.length; i++) {
+        const icon = icons[i] as HTMLParagraphElement;
+        icon.style.filter = filter
+    }
+
+    await sleep(150);
 
     // 一部ボタンの色変更
     const blacks = document.getElementsByClassName("e__btn")
     for (let i = 0; i < blacks.length; i++) {
         const element = blacks[i] as HTMLParagraphElement
-        element.style.border = "solid 3px #DDDDDD"
+        element.style.border = border
         element.style.backgroundColor = backgroundColor
     }
 
@@ -59,6 +72,8 @@ async function changeBackground(url: string, dark_mode: boolean) {
         const element = inputTexts[i] as HTMLParagraphElement;
         element.style.color = "#000000";
     }
+    const buttonElements: NodeListOf<HTMLParagraphElement> = document.querySelectorAll(".c__list-menu a, .close, .c__list-menu .symbol") as NodeListOf<HTMLParagraphElement>;
+    buttonElements.forEach((element => element.style.backgroundColor = buttonDackgroundColor));
 
     setButtonEvent()
 
