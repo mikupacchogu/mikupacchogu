@@ -3,21 +3,28 @@ interface String {
     isOverByteLimit(byteLimit: number): boolean;
 }
 interface StorageData {
-    [index: string]: string
+    [index: string]: string | boolean
 }
 
 const BYTE_LIMIT: number = 8000;
 
 document.addEventListener('DOMContentLoaded', function () {
-    // 最初にpopupを表示するときに現在設定されている画像をプレビュー表示する
-    chrome.storage.sync.get("img_url", function (data: StorageData) {
-        const url: string = data["img_url"];
-        if (url === "") {
-            return;
+    // 同期ストレージを参照し反映させる
+    chrome.storage.sync.get(["img_url", "dark_mode"], function (data: StorageData) {
+        // 最初にpopupを表示するときに現在設定されている画像をプレビュー表示する
+        const url: string | boolean = data["img_url"];
+        if (typeof url === "string" && url) {
+            setPreviewImage("現在設定中の画像", url)
         }
 
-        setPreviewImage("現在設定中の画像", url)
+        // 現在のダークモード設定を取得し、チェックボックスに反映させる
+        const dark_mode: string | boolean = data["dark_mode"]
+        if (typeof dark_mode === "boolean") {
+            const switchElement = document.getElementById('dark_mode_switch')! as HTMLInputElement
+            switchElement.checked = dark_mode
+        }
     });
+
     // 画像URL入力受付～プレビューまでを行う
     document.getElementById('img_url')!.addEventListener('input', function (e) {
         const url: string = (this as HTMLInputElement).value;
@@ -60,6 +67,13 @@ document.addEventListener('DOMContentLoaded', function () {
             alert("エラーが発生しました: " + error.message);
         }
     });
+
+    document.getElementById('dark_mode_switch')!.addEventListener('click', function () {
+        const switchElement = document.getElementById('dark_mode_switch')! as HTMLInputElement
+        chrome.storage.sync.set({ "dark_mode": switchElement.checked })
+    });
+
+    // 関数宣言部
 
     /**
      * 画像URLのリンク先が存在しているか判定します
