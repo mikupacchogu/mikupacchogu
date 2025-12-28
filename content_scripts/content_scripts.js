@@ -36,7 +36,7 @@ async function changeBackground(url, dark_mode) {
         filter = "";
     }
     // 各メニュー欄の背景色設定
-    const elements = document.querySelectorAll(".l__item, .group, .m__header, .m__footer, .c__page-menu, .c__list-menu a,.c__list-menu .symbol, .-lv1");
+    const elements = document.querySelectorAll(".l__item, .group, .m__header, .m__footer, .c__page-menu, .c__list-menu a,.c__list-menu .symbol, .-lv1, .modal-foot, .c__class-data");
     elements.forEach((element => element.style.backgroundColor = backgroundColor));
     const messageBox = document.getElementsByClassName("message");
     for (let i = 0; i < messageBox.length; i++) {

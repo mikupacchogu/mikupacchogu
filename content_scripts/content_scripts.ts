@@ -42,7 +42,7 @@ async function changeBackground(url: string, dark_mode: boolean) {
     }
 
     // 各メニュー欄の背景色設定
-    const elements: NodeListOf<HTMLParagraphElement> = document.querySelectorAll(".l__item, .group, .m__header, .m__footer, .c__page-menu, .c__list-menu a,.c__list-menu .symbol, .-lv1") as NodeListOf<HTMLParagraphElement>;
+    const elements: NodeListOf<HTMLParagraphElement> = document.querySelectorAll(".l__item, .group, .m__header, .m__footer, .c__page-menu, .c__list-menu a,.c__list-menu .symbol, .-lv1, .modal-foot, .c__class-data") as NodeListOf<HTMLParagraphElement>;
     elements.forEach((element => element.style.backgroundColor = backgroundColor));
 
     const messageBox = document.getElementsByClassName("message")
