@@ -11,6 +11,8 @@ div.inputSwitchArea {
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    margin: -16px auto -4px;
 }
 
 img {
