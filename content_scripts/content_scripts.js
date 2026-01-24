@@ -48,7 +48,7 @@ async function changeBackground(url, dark_mode) {
         const icon = icons[i];
         icon.style.filter = filter;
     }
-    await sleep(150);
+    await sleep(200);
     // 一部ボタンの色変更
     const blacks = document.getElementsByClassName("e__btn");
     for (let i = 0; i < blacks.length; i++) {
