@@ -9,16 +9,17 @@
 <body>
     <h1>Backgraund Image config</h1>
     <h2>for TUT portal</h2>
-    <h3>設定画面</h3>
-    <h4>画像登録</h4>
-    <label for="url">設定したい画像のURLを入力してください<br>推奨画像形式:png,jpg,gif,bmp</label>
-    <div class="inputImgArea">
-        <input type="url" name="img_url" id="img_url" placeholder="https://example.com/example.png" pattern="https?://"
-            size="30" required />
-        <button name="button" id="send" style="cursor: not-allowed;">更新</button>
+    <div class="sien-parts">
+        <h2 id="sien">Mikutoを支援しよう！</h2>
+        <p>
+            <a href="">こちら</a>で応援・感謝のコメントを送ることで、Mikutoの開発モチベーションが上がります！<br>
+            機能の要望送ることができます。もしかしたら採用されるかも？
+        </p>
+        <a href="https://ofuse.me/o?uid=79702" target="_blank" rel="noopener noreferrer" class="btn_01">
+            OFUSEで<br>支援する！！
+        </a>
     </div>
-    <p id="message"></p>
-    <span id="img_sample"></span>
+    <h3>設定画面</h3>
     <h4>ダークモード</h4>
     <div class="inputSwitchArea">
         <label for="darkModeSwitchArea">ダークモードのON/OFF切り替えます</label>
@@ -28,6 +29,15 @@
             <div id="swImg"></div>
         </div>
     </div>
+    <h4>画像登録</h4>
+    <label for="url">設定したい画像のURLを入力してください<br>推奨画像形式:png,jpg,gif,bmp</label>
+    <div class="inputImgArea">
+        <input type="url" name="img_url" id="img_url" placeholder="https://example.com/example.png" pattern="https?://"
+            size="30" required />
+        <button name="button" id="send" style="cursor: not-allowed;">更新</button>
+    </div>
+    <p id="message"></p>
+    <span id="img_sample"></span>
     <script src="./js/script.js"></script>
 </body>
 

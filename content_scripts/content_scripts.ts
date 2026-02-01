@@ -41,6 +41,23 @@ async function changeBackground(url: string, dark_mode: boolean) {
         filter = ""
     }
 
+    // こうかとんのメッセージを乗っ取る
+    const kokatonMessageElement: HTMLElement | null = document.querySelector(".kokaton-messege .message");
+    if (kokatonMessageElement) {
+        kokatonMessageElement.textContent = ""
+        kokatonMessageElement.insertAdjacentHTML(
+            "afterbegin",
+            "Using Backgraund Image config for TUT Potal by <a href='https://x.com/Mikuto_0831' target='_blank' rel='noopener noreferrer'>Mikuto</a><br><a href='https://ofuse.me/o?uid=79702' target='_blank' rel='noopener noreferrer'>ここをクリックしてメッセージを送って開発支援・応援しよう！</a>"
+        );
+    }
+
+    // こうかとんの画像を乗っ取る
+    const kokatonImgElement: HTMLElement | null = document.querySelector(".kokaton-messege .avatar");
+    if (kokatonImgElement) {
+        kokatonImgElement.style.backgroundImage = "url('https://avatars.githubusercontent.com/u/152457695?v=4')"
+    }
+
+
     // 各メニュー欄の背景色設定
     const elements: NodeListOf<HTMLParagraphElement> = document.querySelectorAll(".l__item, .group, .m__header, .m__footer, .c__page-menu, .c__list-menu a,.c__list-menu .symbol, .-lv1, .modal-foot, .c__class-data") as NodeListOf<HTMLParagraphElement>;
     elements.forEach((element => element.style.backgroundColor = backgroundColor));
@@ -57,7 +74,7 @@ async function changeBackground(url: string, dark_mode: boolean) {
         icon.style.filter = filter
     }
 
-    await sleep(150);
+    await sleep(200);
 
     // 一部ボタンの色変更
     const blacks = document.getElementsByClassName("e__btn")

@@ -11,6 +11,8 @@ div.inputSwitchArea {
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    margin: -16px auto -4px;
 }
 
 img {
@@ -30,6 +32,16 @@ h2 {
 
 #send {
     white-space: nowrap;
+}
+
+.sien-parts {
+    width: 90%;
+    background-color: #c2f8ff;
+    margin: 2px auto 2px;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 5px;
+    padding-top: 1px;
 }
 
 /* === ボタンを表示するエリア ============================== */
@@ -125,4 +137,25 @@ h2 {
     /* 丸も右へ移動       */
     background: #78bd78;
     /* カーソルタブの背景 */
+}
+
+/* 支援ボタン */
+a.btn_01 {
+	display: block;
+	text-align: center;
+    font-size: 16px;
+	vertical-align: middle;
+	text-decoration: none;
+	width: 120px;
+	margin: auto;
+	padding: 1rem 4rem;
+	font-weight: bold;
+	border: 2px solid #27acd9;
+	color: #27acd9;
+    background-color: #fff;
+	transition: 0.5s;
+}
+a.btn_01:hover {
+	color: #fff;
+	background: #27acd9;
 }
