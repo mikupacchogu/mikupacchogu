@@ -47,7 +47,7 @@ async function changeBackground(url: string, dark_mode: boolean) {
         kokatonMessageElement.textContent = ""
         kokatonMessageElement.insertAdjacentHTML(
             "afterbegin",
-            "Using Backgraund Image config for TUT Potal by <a href='https://x.com/Mikuto_0831' target='_blank' rel='noopener noreferrer'>Mikuto</a><br><a href='https://ofuse.me/o?uid=79702' target='_blank' rel='noopener noreferrer'>ここをクリックしてメッセージを送って開発支援・応援しよう！</a>"
+            "Using Background Image config for TUT Potal by <a href='https://x.com/Mikuto_0831' target='_blank' rel='noopener noreferrer'>Mikuto</a><br><a href='https://ofuse.me/o?uid=79702' target='_blank' rel='noopener noreferrer'>ここをクリックしてメッセージを送って開発支援・応援しよう！</a>"
         );
     }
 
