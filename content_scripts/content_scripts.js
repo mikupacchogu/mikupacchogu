@@ -39,7 +39,7 @@ async function changeBackground(url, dark_mode) {
     const kokatonMessageElement = document.querySelector(".kokaton-messege .message");
     if (kokatonMessageElement) {
         kokatonMessageElement.textContent = "";
-        kokatonMessageElement.insertAdjacentHTML("afterbegin", "Using Background Image config for TUT Potal by <a href='https://x.com/Mikuto_0831' target='_blank' rel='noopener noreferrer'>Mikuto</a><br><a href='https://ofuse.me/o?uid=79702' target='_blank' rel='noopener noreferrer'>ここをクリックしてメッセージを送って開発支援・応援しよう！</a>");
+        kokatonMessageElement.insertAdjacentHTML("afterbegin", "<a href='https://github.com/Mikuto0831/portal_backimg/wiki' target='_blank' rel='noopener noreferrer'>Using Background Image config for TUT Potal</a> by <a href='https://x.com/Mikuto_0831' target='_blank' rel='noopener noreferrer'>Mikuto</a><br><a href='https://ofuse.me/o?uid=79702' target='_blank' rel='noopener noreferrer'>ここをクリックしてメッセージを送って開発支援・応援しよう！</a>");
     }
     // こうかとんの画像を乗っ取る
     const kokatonImgElement = document.querySelector(".kokaton-messege .avatar");
