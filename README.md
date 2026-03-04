@@ -1,4 +1,4 @@
-# 拡張機能『Backgraund Image config for TUT portal』
+# 拡張機能『Background Image config for TUT portal』
 ## 導入方法
 1. 任意のフォルダにて`git clone https://github.com/Mikuto0831/portal_backimg.git` を実行してください。
 2. clone作業が終わりましたら次のリンク先を参考に作業を進めてください。
