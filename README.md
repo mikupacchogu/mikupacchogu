@@ -1,9 +1,9 @@
-# 拡張機能『Background Image config for TUT portal』
+# ichiyasaGitSample
 # [正式導入方法はこちら！！！](https://chromewebstore.google.com/detail/background-image-config-f/pjnlhlceabfnnhceclcepegadecalejm)
 [https://chromewebstore.google.com/detail/background-image-config-f/pjnlhlceabfnnhceclcepegadecalejm](https://chromewebstore.google.com/detail/background-image-config-f/pjnlhlceabfnnhceclcepegadecalejm)
 
 ## 開発環境への導入方法
-1. 任意のフォルダにて`git clone https://github.com/Mikuto0831/portal_backimg.git` を実行してください。
+1. 任意のフォルダにて`git clone https://github.com/Mikuto0831/ichiyasaGitSample.git` を実行してください。
 2. clone作業が終わりましたら次のリンク先を参考に作業を進めてください。
   https://exemate.co.jp/archives/7594
 ## 使用方法
