@@ -1,4 +1,4 @@
-# miniatureanalysis
+# faiss-nlp
 # [正式導入方法はこちら！！！](https://chromewebstore.google.com/detail/background-image-config-f/pjnlhlceabfnnhceclcepegadecalejm)
 [https://chromewebstore.google.com/detail/background-image-config-f/pjnlhlceabfnnhceclcepegadecalejm](https://chromewebstore.google.com/detail/background-image-config-f/pjnlhlceabfnnhceclcepegadecalejm)
 
